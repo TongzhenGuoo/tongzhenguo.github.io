@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tongzhen Guo - Graphic Designer</title>
+    <style>
+        /* 全局样式重置和基础设置 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        body {
+            background-color: #F8F4E9; /* 浅米色背景 */
+            color: #644B43; /* 深棕色文字 */
+            line-height: 1.6;
+            scroll-behavior: smooth; /* 平滑滚动 */
+        }
+
+        /* 导航栏样式 */
+        nav {
+            background-color: #FDD3D5; /* 浅粉色导航栏 */
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: #644B43;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #644B43;
+            font-size: 1.1rem;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.7;
+        }
+
+        /* 首屏Banner样式 */
+        .banner {
+            background-color: #775C55; /* 深棕色背景 */
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #F5F0E6;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* 背景图设置 */
+        .banner::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('home/background.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            opacity: 0.8;
+            z-index: 1;
+        }
+
+        .banner-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .banner h1 {
+            font-size: 8rem;
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+        }
+
+        .banner-subtitle {
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 40rem;
+        }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 2rem;
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+
+        /* 内容容器通用样式 */
+        .container {
+            max-width: 1000px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        /* 简短个人介绍 */
+        .intro-brief {
+            margin-bottom: 5rem;
+        }
+
+        .intro-brief p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin-bottom: 1rem;
+        }
+
+        /* What I Do 板块样式 */
+        .what-i-do {
+            margin-bottom: 6rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            text-transform: capitalize;
+            letter-spacing: 2px;
+        }
+
+        .services {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .service-item h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            text-transform: capitalize;
+            letter-spacing: 0;
+        }
+
+        .service-item p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            opacity: 0.8;
+        }
+
+        /* Skills & Tools 样式 */
+        .skills-tools {
+            margin: 5rem 0; /* 和上下内容保持间距 */
+            padding: 2rem 0;
+            border-top: 1px solid rgba(100, 75, 67, 0.2);
+            border-bottom: 1px solid rgba(100, 75, 67, 0.2);
+        }
+
+        .skills-tools h3 {
+            font-size: 2rem;
+            text-transform: capitalize;
+            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
+        }
+
+        .skills-tools .category {
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .skills-tools .content {
+            font-size: 1.1rem;
+            opacity: 0.8;
+            line-height: 1.8;
+        }
+
+        /* 项目展示样式 */
+        .projects {
+            margin-bottom: 6rem;
+        }
+
+        .project-list {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
+
+        .project-item {
+            display: flex;
+            justify-content: space-between;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(100, 75, 67, 0.2);
+            position: relative; /* 为悬浮图片提供定位参考 */
+            cursor: pointer; /* 鼠标变为手型，提示可交互 */
+            padding: 1rem 0; /* 增加点击区域 */
+        }
+
+        .project-year {
+            flex: 1;
+            font-size: 1.5rem;
+            font-weight: 500;
+        }
+
+        .project-details {
+            flex: 3;
+            text-align: right;
+        }
+
+        .project-title {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .project-type {
+            font-size: 1.2rem;
+            opacity: 0.8;
+            line-height: 1.8;
+        }
+
+        /* 项目悬浮图片通用样式 */
+        .project-image {
+            position: absolute;
+            top: 100%; /* 图片显示在项目条目下方 */
+            left: 0;
+            width: 80%;
+            height: 0; /* 默认隐藏 */
+            opacity: 0;
+            overflow: hidden;
+            transition: all 0.5s ease; /* 平滑过渡效果 */
+            z-index: 50;
+            margin-top: -1rem;
+            border-radius: 4px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .project-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* 鼠标悬停时显示图片 - 统一控制三个项目 */
+        .mushmush-item:hover .project-image,
+        .innerskin-item:hover .project-image,
+        .sheer-item:hover .project-image {
+            height: auto;
+            opacity: 1;
+            padding: 0;
+        }
+
+        /* 合作邀请样式 */
+        .collaboration {
+            margin-bottom: 8rem;
+            text-align: center;
+        }
+
+        .collaboration p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 1.5rem;
+        }
+
+        /* 响应式适配 */
+        @media (max-width: 768px) {
+            .banner h1 {
+                font-size: 2.5rem;
+            }
+
+            .project-item {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .project-details {
+                text-align: left;
+            }
+
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- 导航栏 -->
+<nav>
+    <div class="nav-container">
+        <div class="logo">Tongzhen Guo</div>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="project/projects.html">Projects</a>
+            <!-- About链接指向独立的about.html，同标签页跳转 -->
+            <a href="about/about.html">About</a>
+        </div>
+    </div>
+</nav>
+
+<!-- 首屏Banner -->
+<section id="home" class="banner">
+    <div class="banner-content">
+        <h1>Hi, I'm Tongzhen</h1>
+        <p class="banner-subtitle">Graphic Designer Focused on Concept & Visual Systems</p>
+    </div>
+    <div class="scroll-hint"></div>
+</section>
+
+<!-- 主要内容容器 -->
+<div class="container">
+    <!-- 简短个人介绍 -->
+    <section class="intro-brief">
+        <p>I am a graphic designer based in Toronto, working across branding, editorial, and cultural projects.</p>
+        <p>My practice is grounded in conceptual thinking and system-based design. I approach each project by identifying its context, defining a clear visual logic, and building a cohesive visual language that supports long-term communication rather than short-term visual impact.</p>
+    </section>
+
+    <!-- What I Do 板块 -->
+    <section class="what-i-do">
+        <h2 class="section-title">What I Do</h2>
+        <div class="services">
+            <div class="service-item">
+                <h3>Visual Identity Systems</h3>
+                <p>Building structured brand languages through typography, color, and layout systems.</p>
+            </div>
+            <div class="service-item">
+                <h3>Concept-Driven Design</h3>
+                <p>Transforming abstract ideas into clear and accessible visual communication.</p>
+            </div>
+            <div class="service-item">
+                <h3>Editorial & Information Design</h3>
+                <p>Organizing complex content into readable and engaging formats.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills & Tools 板块 -->
+    <section class="skills-tools">
+        <h3><strong>Skills & Tools</strong></h3>
+        <div class="category" style="font-size: 1.4rem"><strong>Design Focus:</strong></div>
+        <div class="content">Brand Identity / Typography / Information Design / Visual Systems</div>
+        <div class="category" style="margin-top: 1.5rem;font-size:1.4rem"><strong>Software:</strong></div>
+        <div class="content">Adobe Illustrator / Adobe InDesign / Adobe Photoshop / Figma / Basic HTML & CSS</div>
+    </section>
+
+    <!-- 项目展示 -->
+    <section class="projects" id="projects">
+        <div class="project-list">
+            <!-- MUSHMUSH项目 -->
+            <div class="project-item mushmush-item">
+                <div class="project-year">2023</div>
+                <div class="project-details">
+                    <h3 class="project-title">MUSHMUSH</h3>
+                    <p class="project-type">Infographic Design<br>Image Design</p>
+                </div>
+                <!-- 悬浮图片 -->
+                <div class="project-image">
+                    <img src="home/mushmush.jpg" alt="MUSHMUSH Project">
+                </div>
+            </div>
+
+            <!-- INNERSKIN项目 -->
+            <div class="project-item innerskin-item">
+                <div class="project-year">2024</div>
+                <div class="project-details">
+                    <h3 class="project-title">INNERSKIN</h3>
+                    <p class="project-type">Book Design<br>Brand Design</p>
+                </div>
+                <!-- 悬浮图片 -->
+                <div class="project-image">
+                    <img src="home/innerskin.JPG" alt="INNERSKIN Project">
+                </div>
+            </div>
+
+            <!-- SHEER NONSENSE项目 -->
+            <div class="project-item sheer-item">
+                <div class="project-year">2025</div>
+                <div class="project-details">
+                    <h3 class="project-title">SHEER NONSENSE</h3>
+                    <p class="project-type">Font Design<br>Installation Design</p>
+                </div>
+                <!-- 悬浮图片 -->
+                <div class="project-image">
+                    <img src="home/sheer.jpg" alt="SHEER NONSENSE Project">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 合作邀请 -->
+    <section class="collaboration">
+        <p>I am open to collaboration with studios, creative teams, and cultural organizations.</p>
+        <p>If my work aligns with your project goals, feel free to get in touch.</p>
+        <p>tongzhenguo@ocadu.ca</p>
+    </section>
+</div>
+</body>
+</html>

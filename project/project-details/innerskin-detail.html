@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INNERSKIN - Detailed Project</title>
+    <style>
+        /* 全局样式重置 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        body {
+            background-color: #F8F4E9;
+            color: #644B43;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        nav {
+            background-color: #FDD3D5;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: #644B43;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #644B43;
+            font-size: 1.1rem;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.7;
+        }
+        .nav-links a.active {
+            font-weight: bold;
+            opacity: 1;
+        }
+
+        /* 图片容器 - 核心布局 */
+        .project-gallery {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem; /* 图片之间的间距 */
+        }
+
+        .project-gallery img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        /* 响应式适配 */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .project-gallery {
+                padding: 0 1rem;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- 导航栏 - 保持和主站统一 -->
+<nav>
+    <div class="nav-container">
+        <div class="logo">Tongzhen Guo</div>
+        <div class="nav-links">
+            <a href="../projects.html" target="_parent">Back to Projects</a>
+        </div>
+    </div>
+</nav>
+
+<!-- 三张详情图片从上到下排列 -->
+<div class="project-gallery">
+    <img src="../innerskin/06.jpg" alt="INNERSKIN Detail 1">
+    <img src="../innerskin/07.jpg" alt="INNERSKIN Detail 2">
+    <img src="../innerskin/08.jpg" alt="INNERSKIN Detail 3">
+    <img src="../innerskin/09.jpg" alt="INNERSKIN Detail 4">
+    <img src="../innerskin/10.jpg" alt="INNERSKIN Detail 5">
+</div>
+</body>
+</html>
